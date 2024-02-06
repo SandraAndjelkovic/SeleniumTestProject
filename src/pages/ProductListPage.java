@@ -15,6 +15,8 @@ public class ProductListPage extends BasePage{
     By cartBtnBy = By.id("shopping_cart_container");
     By sortBtnBy = By.xpath("//select[@class = 'product_sort_container']");
     By itemNamesBy = By.xpath("//div[@class='inventory_item_name ']");
+    By AddBtnBy = By.id("add-to-cart-sauce-labs-backpack");
+
     public ProductListPage verifySuccessfulLogin(){
         String actualText = readText(pageTitleBy);
         verifyTextIsTheSame(expectedPageTitle, actualText);
@@ -45,6 +47,17 @@ public class ProductListPage extends BasePage{
         public ProductListPage verifyFirstItemName(String expectedProductName){
             String actualProductTitle = readText(itemNamesBy);
             verifyTextIsTheSame(expectedProductName, actualProductTitle);
+            return this;
+        }
+
+        public ProductListPage verifyNumberOfProducts(int expectedNumberOfProducts){
+            int actualNumberOfElements = countNumberOfElements(itemNamesBy);
+            verifyNumberOfElements(expectedNumberOfProducts, actualNumberOfElements);
+            return this;
+        }
+        public ProductListPage addProductsToCart(){
+            clikElement(AddBtnBy);
+
             return this;
         }
   }

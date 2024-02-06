@@ -11,6 +11,7 @@ public class ProductListTest  extends BaseTest{
     String expectedCartPageTitle ="Your Cart";
     String expectedFirstItemNameLoHi = "Sauce Labs Onesie";
     String expectedFirstItemNameHilo = "Sauce Labs Fleece Jacket";
+    String expectedAddToCart = "Sauce Labs Backpack";
 
     @Test
 
@@ -52,6 +53,31 @@ public class ProductListTest  extends BaseTest{
 
         }
     
-    
+    @Test 
+
+    public void verifyNumberOfProducts(){
+        LoginPage loginPage = new LoginPage(driver);
+        ProductListPage productListPage = new ProductListPage(driver);
+        loginPage.goToLoginPage();
+        loginPage.login(validUsername, validPassword);
+        productListPage.verifyNumberOfProducts(6);
+
+    }
+    @Test
+
+    public void addProductsToCart(){
+        
+        LoginPage loginPage = new LoginPage(driver);
+        ProductListPage productListPage = new ProductListPage(driver);
+        loginPage.goToLoginPage();
+        loginPage.login(validUsername, validPassword);
+        
+        
+
+
+    }
+
+     
+
 
 }
